@@ -365,7 +365,7 @@ const meal = [
 },
 ];
 
-let cart = [];
+let ccart = [];
 
 // Check menu category name in log
 const menuname = document.getElementById("menucat_id").innerText;
@@ -400,7 +400,7 @@ function displayMenuList(menucat)
         addToCartDiv.className = "add-to-cart-logo round-logo col-md-6";
         addToCartDiv.id = item.name;
 
-        if (cart.find((cartItem) => item.name === cartItem.name)) 
+        if (ccart.find((cartItem) => item.name === cartItem.name)) 
         {
             // Check if item is already in cart
             item.isItemInCart = true;
@@ -457,7 +457,7 @@ function receivetrgr(catselect)
 {
     document.getElementById("menucat_id").innerText=catselect;
 
-    const mealil = meal.filter((food) => food.category === category);
+    const mealil = meal.filter((food) => food.catselect === catselect);
     displayMenuList(mealil);
 }
 
@@ -478,9 +478,135 @@ function addToCart(_itn)
         alert("Meal is not found!");
         return;
     }
-
-
+    const divaddtocart = document.getElementById(mealselect.name);
+    if (!mealselect.itemcart)
+    {
+        mealselect.itemcart = true;
+        if (divaddtocart)
+        {
+            divaddtocart.classList.add("item-in-cart");
+            ccart.push(mealselect);
+            document.getElementById("total-cart-items").innerText = ccart.length
+            ? ccart.length: "";
+        }
+    }else
+    {
+        removecartitem(mealselect, divaddtocart);
+    }
 }
+
+/**
+ * @param {MealSelect} mealselect
+ * @param {HtmlElement} divaddtocart
+ */
+function removecartitem(mealselect, div)
+{
+    mealselect.itemcart = false;
+    ccart.splice(ccart.indexOf(mealselect),1);
+    div.classList.remove("item-in-cart");
+    document.getElementById("total-cart-items").innerText = ccart.length? ccart.length: "";
+}
+
+
+function cartempty()
+{
+    ccart = [];    
+}
+
+function cartdisp()
+{
+    const cardmen = document.getElementById("menu-card");
+    cardmen.innerHTML = "";
+
+    document.getElementById("menu-category").innerText = '';
+
+    const cartbod = document.createElement("div");
+    cartbod.className = "cart-body";
+
+    // Create the heading
+    const heading = document.createElement("h2");
+    heading.textContent = "Items Added in Wishlist";
+    cartbod.appendChild(heading);
+
+    // Create the table
+    const table = document.createElement("table");
+    table.className = "table table-borderless";
+
+    // Create the table head
+    const thead = document.createElement("thead");
+    const headRow = document.createElement("tr");
+
+    const headItem1 = document.createElement("th");
+    headItem1.scope = "col";
+    headItem1.textContent = "Item";
+
+    const headItem2 = document.createElement("th");
+    headItem2.scope = "col";
+    headItem2.textContent = "Name";
+
+    const headItem3 = document.createElement("th");
+    headItem3.scope = "col";
+    headItem3.textContent = "Price ($)";
+
+    headRow.appendChild(headItem1);
+    headRow.appendChild(headItem2);
+    headRow.appendChild(headItem3);
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    // Create the table body
+    const tbody = document.createElement("tbody");
+
+    // Adding items in cart dynamically
+    cart.forEach((item) => {
+        const row = document.createElement("tr");
+
+        const logoCell = document.createElement("td");
+        const logoImg = document.createElement("img");
+        logoImg.src = item.logo;
+        logoImg.className = "cart-img-logo";
+        logoImg.alt = "Food Logo";
+        logoCell.appendChild(logoImg);
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = item.name;
+
+        const priceCell = document.createElement("td");
+        priceCell.textContent = item.price;
+
+        row.appendChild(logoCell);
+        row.appendChild(nameCell);
+        row.appendChild(priceCell);
+
+        tbody.appendChild(row);
+    });
+
+    // Create the total row
+    const totalRow = document.createElement("tr");
+
+    const emptyCell = document.createElement("td");
+    const emptyCell2 = document.createElement("td");
+    const totalCell = document.createElement("td");
+
+    const totalAmt = cart.reduce(
+        (total, item) => total + Number(item.price.substring(1)),
+        0
+    );
+    totalCell.textContent = "$" + totalAmt;
+
+    totalRow.appendChild(emptyCell);
+    totalRow.appendChild(emptyCell2);
+    totalRow.appendChild(totalCell);
+
+    tbody.appendChild(totalRow);
+
+    table.appendChild(tbody);
+    cartBody.appendChild(table);
+    menuCard.appendChild(cartBody);
+}
+
+
+
 
 
 

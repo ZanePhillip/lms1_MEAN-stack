@@ -3,11 +3,6 @@ html
 height: 100%;
 }
 
-body
-{
-    
-}
-
 /* Header */
 
 .header-item
@@ -87,6 +82,12 @@ i
     margin-top: 20px;
 }
 
+.menucat
+{
+    margin-left: 5%;
+    font-size: 50px;
+}
+
 /* Sidebar right */
 .sidebarR
 {
@@ -96,7 +97,7 @@ i
     background-image:url('./Assets/images/background2_.png');
     background-repeat: no-repeat;background-attachment: fixed; background-size: cover;
     float: left;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .sbrcon
@@ -113,6 +114,23 @@ i
     height: 3px;
     margin-left: 35%;
     margin-top: 15px;
+}
+
+.food
+{
+    color: #ffffff;
+    background-color: #da251d;
+    width: 95%;
+    margin-top: 5%;
+    border-radius: 10px;
+    margin-left: 3%;    
+}
+
+.sbrfdimg
+{
+    height: 70px;
+    width: 70px;
+    margin-left: 10%;
 }
 
 
