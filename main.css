@@ -1,0 +1,119 @@
+html
+{
+height: 100%;
+}
+
+body
+{
+    background-image: ;
+}
+
+/* Header */
+
+.header-item
+{
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    margin-top: -20px;    
+}
+
+.headimg
+{
+    height: 45px;
+    margin-left: 25%;
+}
+
+.navbar 
+{
+    background-color: #da251d;
+    padding: .5%;
+    padding-right: 2%;
+}
+
+.nav-link
+{
+    color: #ffffff;    
+}
+.nav-link:hover
+{
+    color: yellow;
+}
+
+i
+{
+    color: #ffffff;
+}
+
+/* Sidebar left */
+.sidebarL
+{
+    height: 100vh;
+    width: 10%;
+    margin-top: 40px;
+    background-image:url('./Assets/images/background2_.png');
+    background-repeat: no-repeat;background-attachment: fixed; background-size: cover;
+    float: left;
+    text-align: center;
+}
+
+.sblcon
+{
+    margin-top: 20px;
+}
+
+.btn.btn.btn-primary
+{
+    width: 90%;    
+}
+.btn.btn.btn-secondary
+{
+    width: 90%;
+    margin-top: 5%;    
+}
+
+/* Main content */
+.main
+{
+    height: 100vh;
+    width: 80%;
+    margin-top: 40px;
+    background-color: #da251d;
+    color: #ffffff;
+    float: left;
+}
+.maincon
+{
+    margin-top: 20px;
+}
+
+/* Sidebar right */
+.sidebarR
+{
+    height: 100vh;
+    width: 10%;
+    margin-top: 40px;
+    background-image:url('./Assets/images/background2_.png');
+    background-repeat: no-repeat;background-attachment: fixed; background-size: cover;
+    float: left;
+    text-align: center;
+}
+
+.sbrcon
+{
+    margin-top: 20px;
+}
+
+
+
+.redline
+{
+    border: 3px solid #da251d;    
+    width: 8.5vw;
+    height: 3px;
+    margin-left: 35%;
+    margin-top: 15px;
+}
+
+
+
