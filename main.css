@@ -11,6 +11,7 @@ height: 100%;
     width: 100%;
     position: fixed;
     margin-top: -20px;    
+    box-shadow: 60px 10px 25px black;
 }
 
 .headimg
@@ -43,8 +44,8 @@ i
 /* Sidebar left */
 .sidebarL
 {
-    height: 100vh;
-    width: 10%;
+    height: 130vh;
+    width: 16.5%;
     margin-top: 40px;
     background-image:url('./Assets/images/background2_.png');
     background-repeat: no-repeat;background-attachment: fixed; background-size: cover;
@@ -70,16 +71,30 @@ i
 /* Main content */
 .main
 {
-    height: 100vh;
-    width: 80%;
+    height: 130vh;
+    width: 67%;
     margin-top: 40px;
     background-color: #da251d;
     color: #ffffff;
     float: left;
+    text-align: center;
 }
 .maincon
 {
     margin-top: 20px;
+}
+.menuconrow
+{
+    height: 110vh;
+    width: 67vw;
+    margin-top: -7px;
+    background-color: whitesmoke;
+    padding: 3%;
+    color: #da251d;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 5px 5px 15px black;
+    /* float: right; */
 }
 
 .menucat
@@ -91,13 +106,19 @@ i
 /* Sidebar right */
 .sidebarR
 {
-    height: 100vh;
-    width: 10%;
+    height: 130vh;
+    width: 16.5%;
     margin-top: 40px;
     background-image:url('./Assets/images/background2_.png');
     background-repeat: no-repeat;background-attachment: fixed; background-size: cover;
     float: left;
+    color: #da251d;
     /* text-align: center; */
+}
+
+.sidebarR:hover
+{
+    background-color: darkgray;
 }
 
 .sbrcon
@@ -109,9 +130,9 @@ i
 
 .redline
 {
-    border: 3px solid #da251d;    
-    width: 8.5vw;
-    height: 3px;
+    border: 5px solid #da251d;    
+    width: 15.5vw;
+    height: 10px;
     margin-left: 35%;
     margin-top: 15px;
 }
@@ -123,7 +144,13 @@ i
     width: 95%;
     margin-top: 5%;
     border-radius: 10px;
-    margin-left: 3%;    
+    margin-left: 3%;  
+    box-shadow: 5px 8px 15px black;
+}
+
+.food:hover
+{
+    background-color: darkgray;
 }
 
 .sbrfdimg
@@ -133,5 +160,53 @@ i
     margin-left: 10%;
 }
 
+/* Footer */
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    padding-top: 1%;
+}
+
+/* location check */
+.rating-card {
+    border-radius: 20px;
+    margin-left: 30px;
+    color: #f88b25;
+    background-color: #070707;
+    font-size: 16px;
+    width: auto;
+    padding: 0.4vh 0.7vw;
+    margin: 1.5vh 0 0 1vw;
+}
+
+.item-in-cart {
+    border-radius: 20px;
+    margin-right: -20px;
+    color: #f88b25;
+    background-color: #da251d;
+    font-size: 16px;
+    width: auto;
+    padding: 0.4vh 0.7vw;
+    margin: 1.5vh 0 0 1vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-header-row {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+
+/* .card-food-item-card-col-md-3
+{
+    display: flex;
+    flex-wrap: wrap;
 
 
+} */
+
+.btn-primary
+{
+    background-color: #da251d;
+}

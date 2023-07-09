@@ -18,7 +18,7 @@
 // });
 
 
-
+// Food menu
 const meal = [
 // Beef menu
 {
@@ -371,7 +371,7 @@ let ccart = [];
 const menuname = document.getElementById("menucat_id").innerText;
 console.log("Menu Title: ", menuname);
 
-// Sort meal by categories retrieve data generate HTML Cards
+// Sort meal by categories retrieve data from list, generate HTML Cards
 const menucat = meal.filter((food) => food.category === menuname);
 displayMenuList(menucat);
 
@@ -380,9 +380,11 @@ displayMenuList(menucat);
 // Inner HTML generator for meal items
 function displayMenuList(menucat)
 {
-    const menuCard = document.getElementById("menu-card");
+    const menuCard = document.getElementById("menucrd");
     menuCard.innerHTML = ""; 
-    menucat.forEach((item) => {
+    
+    menucat.forEach((item) => 
+    {
         const card = document.createElement("div");
         card.className = "card food-item-card col-md-3";
 
@@ -437,7 +439,7 @@ function displayMenuList(menucat)
         card.appendChild(image);
         card.appendChild(cardBody);
 
-        card.onclick = () => addItemToCart(item.name);
+        card.onclick = () => addToCart(item.name);
 
         cardBody.appendChild(title);
         cardBody.appendChild(price);
@@ -449,61 +451,62 @@ function displayMenuList(menucat)
 // provides type,description of a function parameter
 /**
  * 
- * @param {string} catselect 
+ * @param {string} category 
  */
 
 // Receive trigger from HTML
-function receivetrgr(catselect)
+function receivetrgr(category)
 {
-    document.getElementById("menucat_id").innerText=catselect;
+    document.getElementById("menucat_id").innerText=category;
+    console.log("Menu Title: ",category);
 
-    const mealil = meal.filter((food) => food.catselect === catselect);
-    displayMenuList(mealil);
+    const menucat = meal.filter((food) => food.category === category);
+    console.log("menucat is: ",menucat)
+    displayMenuList(menucat);
 }
 
 // provides type,description of a function parameter
 /**
  * 
- * @param {string} _itn 
+ * @param {string} itn 
  * @returns 
  */
 
-function addToCart(_itn)
+function addToCart(itn)
 {
-    console.log(_itn);
-
-    mealselect=meal.find((item) => item.name === _itn);//locates itame name
+    console.log(itn);
+    mealselect=meal.find((item) => item.name === itn);//locates item name
     if (!mealselect?.name)
     {
         alert("Meal is not found!");
         return;
     }
-    const divaddtocart = document.getElementById(mealselect.name);
-    if (!mealselect.itemcart)
+    const addToCartDiv = document.getElementById(mealselect.name);
+    if (!mealselect.isItemInCart)
     {
-        mealselect.itemcart = true;
-        if (divaddtocart)
+        mealselect.isItemInCart = true;
+        if (addToCartDiv)
         {
-            divaddtocart.classList.add("item-in-cart");
+            addToCartDiv.classList.add("item-in-cart");
             ccart.push(mealselect);
             document.getElementById("total-cart-items").innerText = ccart.length
             ? ccart.length: "";
         }
     }else
     {
-        removecartitem(mealselect, divaddtocart);
+        removecartitem(mealselect, addToCartDiv);
     }
 }
 
 /**
  * @param {MealSelect} mealselect
- * @param {HtmlElement} divaddtocart
+ * @param {HtmlElement} addToCartDiv
  */
-function removecartitem(mealselect, div)
+function removecartitem(mealselect, addToCartDiv)
 {
-    mealselect.itemcart = false;
+    mealselect.isItemInCart = false;
     ccart.splice(ccart.indexOf(mealselect),1);
-    div.classList.remove("item-in-cart");
+    addToCartDiv.classList.remove("item-in-cart");
     document.getElementById("total-cart-items").innerText = ccart.length? ccart.length: "";
 }
 
@@ -515,17 +518,17 @@ function cartempty()
 
 function cartdisp()
 {
-    const cardmen = document.getElementById("menu-card");
+    const cardmen = document.getElementById("menucrd");
     cardmen.innerHTML = "";
 
-    document.getElementById("menu-category").innerText = '';
+    document.getElementById("menucat_id").innerText = '';
 
     const cartbod = document.createElement("div");
     cartbod.className = "cart-body";
 
     // Create the heading
     const heading = document.createElement("h2");
-    heading.textContent = "Items Added in Wishlist";
+    heading.textContent = "Items Added in Your Cart";
     cartbod.appendChild(heading);
 
     // Create the table
@@ -558,7 +561,7 @@ function cartdisp()
     const tbody = document.createElement("tbody");
 
     // Adding items in cart dynamically
-    cart.forEach((item) => {
+    ccart.forEach((item) => {
         const row = document.createElement("tr");
 
         const logoCell = document.createElement("td");
@@ -588,11 +591,11 @@ function cartdisp()
     const emptyCell2 = document.createElement("td");
     const totalCell = document.createElement("td");
 
-    const totalAmt = cart.reduce(
+    const totalAmt = ccart.reduce(
         (total, item) => total + Number(item.price.substring(1)),
         0
     );
-    totalCell.textContent = "$" + totalAmt;
+    totalCell.textContent = "Total Amount : $" + totalAmt;
 
     totalRow.appendChild(emptyCell);
     totalRow.appendChild(emptyCell2);
@@ -601,8 +604,8 @@ function cartdisp()
     tbody.appendChild(totalRow);
 
     table.appendChild(tbody);
-    cartBody.appendChild(table);
-    menuCard.appendChild(cartBody);
+    cartbod.appendChild(table);
+    cardmen.appendChild(cartbod);
 }
 
 

@@ -13,8 +13,7 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    
-
+    <!-- CSS -->
     <link rel="icon" type="image/x-icon" href="Assets/images/logo2.png"/>
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
@@ -55,13 +54,13 @@
                                 <b>Menu</b>
                               </a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Beef</a>
-                                <a class="dropdown-item" href="#">Chicken</a>
-                                <a class="dropdown-item" href="#">Vegetables</a>
-                                <a class="dropdown-item" href="#">Rice</a>
+                                <a class="dropdown-item" href="#" onclick="receivetrgr('Beef')">Beef</a>
+                                <a class="dropdown-item" href="#" onclick="receivetrgr('Chicken')">Chicken</a>
+                                <a class="dropdown-item" href="#" onclick="receivetrgr('Vegetables')">Vegetables</a>
+                                <a class="dropdown-item" href="#" onclick="receivetrgr('Rice')">Rice</a>
                                 <a class="dropdown-item" href="#">Soup</a>
-                                <a class="dropdown-item" href="#">Dimsum</a>
-                                <a class="dropdown-item" href="#">Beverages</a>                                
+                                <a class="dropdown-item" href="#" onclick="receivetrgr('Dimsum')">Dimsum</a>
+                                <a class="dropdown-item" href="#" onclick="receivetrgr('Drinks')">Beverages</a>                                
                               </div>
                           </li>
                           
@@ -78,11 +77,12 @@
                           
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                         
-                          <li class="nav-item">
+                          <li class="nav-item" onclick="cartdisp()">
                             <table>
                                 <tr>
                                     <td><i class="fa-sharp fa-solid fa-cart-shopping"></i></td>
-                                    <td><a class="nav-link" href="#"><b>Cart</b></a></td>
+                                    <td><b><span id="total-cart-items" style="color: white;"></span></b></td>
+                                    <td><a class="nav-link" href="#"><b> Cart</b></a></td>
                                 </tr>
                             </table>
                           </li>
@@ -132,7 +132,7 @@
 
             <div class="sblcon">
                 <div class="sidebar-item">
-                    <input class="btn btn-secondary" type="button" value="Menu">
+                    <input class="btn btn-primary" type="button" value="Menu">
                 </div>
                 <div class="sidebar-item">
                     <input class="btn btn-secondary" type="button" value="Favorites">
@@ -159,7 +159,7 @@
         <!-- Main content -->
         <div class="main" >
             <div class="maincon">
-                <h1  class="menucat" id="menucat_id">Dimsum</h1>
+                <h1  class="menucat" id="menucat_id">Chicken</h1>
                 <div class="menuconrow" id="menucrd">
                     <!-- HTML is dynamically inserted from JavaScript here based on title -->
                 </div>
@@ -179,7 +179,7 @@
                 <li>Tea</li>
                 <li>Milk</li>
               </ul> -->
-              <h2 style="margin-top: 20px; margin-left: 3%;">Category</h2>
+              <h2 style="margin-top: 20px; margin-left: 3%; color: #da251d;"><b>Category</b></h2>
 
               <div class="redline">
               </div>
@@ -209,18 +209,24 @@
                     <img class="sbrfdimg" src="Assets\images\Menu Category\dimsum.png" alt="It's a food">
                     <span> Dimsum</span>
                 </div>
-                <div class="food" onclick="receivetrgr('Beverages')">
+                <div class="food" onclick="receivetrgr('Drinks')">
                     <img class="sbrfdimg" src="Assets\images\Menu Category\drinks.png" alt="It's a food">
                     <span> Beverages</span>
                 </div>
               </div>
         </div>
+
+
+        <!-- Footer -->
+        <footer class="footer bg-light text-center">
+            <p>&copy; 2023 Snacks Point App. All rights reserved.</p>
+        </footer>
     </div>
 
     
 
     <!-- Other JavaScript  -->
-    <script src="C:\Users\maean\Desktop\lms1_Mean-Stack\lms1_MEAN-stack\main.js"></script>
+    <script src="main.js"></script>
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
