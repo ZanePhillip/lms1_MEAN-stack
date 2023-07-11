@@ -498,6 +498,7 @@ function addToCart(itn)
     }
 }
 
+// Param provides type description for the function parameter
 /**
  * @param {MealSelect} mealselect
  * @param {HtmlElement} addToCartDiv
